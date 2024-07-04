@@ -3,50 +3,50 @@
 <head th:replace="common/header :: common-header" />
 <body>
 
-  <div th:replace="adminHome :: navbarAdmin"> </div>
+<div th:replace="adminHome :: navbarAdmin"> </div>
 
-  <div class="container page-content">
-    <table id="table-article" class="table table-striped table-bordered table-hover">
+<div class="container page-content">
+  <table id="table-article" class="table table-striped table-bordered table-hover">
     <thead class="thead-dark">
-      <tr>
-        <th>Title</th>
-        <th>Category</th>
-        <th>Brand</th>
-        <th>Sizes</th>
-        <th>Price</th>
-        <th>Stock</th>
-        <th>Operation</th>
-      </tr>
+    <tr>
+      <th>Tên sản phẩm</th>
+      <th>Danh mục</th>
+      <th>Thương hiệu</th>
+      <th>Kích cỡ</th>
+      <th>Giá</th>
+      <th>Số lượng</th>
+      <th>Thao tác</th>
+    </tr>
     </thead>
     <tbody>
-      <tr data-th-each="article : ${articles}">
-        <td th:text="${article.title}"></td>
-        <td><div style="display:flex;"><span th:each="item : ${article.categories}" 
-            th:text="${item.getName()}" class="badge badge-secondary mt-1 mr-1" ></span></div></td>
-        <td><div style="display:flex;"><span th:each="item : ${article.brands}" 
-            th:text="${item.getName()}" class="badge badge-secondary mt-1 mr-1" ></span></div></td>
-        <td><div style="display:flex;"><span th:each="item : ${article.sizes}" 
-            th:text="${item.getValue()}" class="badge badge-secondary mt-1 mr-1" ></span></div></td>
-        <td th:text="${article.price}"></td>
-        <td th:text="${article.stock}"></td>
-        <td><a th:href="@{/article/edit?id=}+${article.id}" class="badge badge-primary">EDIT</a>  
-            <a th:href="@{/article/delete?id=}+${article.id}" class="badge badge-danger">DELETE </a> </td>
-      </tr>
+    <tr data-th-each="article : ${articles}">
+      <td th:text="${article.title}"></td>
+      <td><div style="display:flex;"><span th:each="item : ${article.categories}"
+                                           th:text="${item.getName()}" class="badge badge-secondary mt-1 mr-1" ></span></div></td>
+      <td><div style="display:flex;"><span th:each="item : ${article.brands}"
+                                           th:text="${item.getName()}" class="badge badge-secondary mt-1 mr-1" ></span></div></td>
+      <td><div style="display:flex;"><span th:each="item : ${article.sizes}"
+                                           th:text="${item.getValue()}" class="badge badge-secondary mt-1 mr-1" ></span></div></td>
+      <td th:text="${article.price}"></td>
+      <td th:text="${article.stock}"></td>
+      <td><a th:href="@{/article/edit?id=}+${article.id}" class="badge badge-primary">SỬA</a>
+        <a th:href="@{/article/delete?id=}+${article.id}" class="badge badge-danger">XÓA </a> </td>
+    </tr>
     </tbody>
   </table>
-  </div>
+</div>
 
 
 
-  <div th:replace="common/header :: body-scripts"> </div>
-  
-  <script>
-  	$(document).ready(function() {
-	    $('#table-article').DataTable({
-	    	stateSave: true
-	    });
-	} );
-  </script> 
+<div th:replace="common/header :: body-scripts"> </div>
+
+<script>
+  $(document).ready(function() {
+    $('#table-article').DataTable({
+      stateSave: true
+    });
+  } );
+</script>
 
 </body>
 </html>
